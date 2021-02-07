@@ -1,22 +1,24 @@
-fetchAPI('https://api.spacexdata.com/v4/launches/upcoming');
+fetchAPI()
+    .then(turnToJSON)
+    .then(makeElement)
+    // .then(console.log)
 
-function fetchAPI(url) {
-	const APIAnswer = fetch(url);
-	APIAnswer.then(answer => {
-		turnToJSON(answer);
-	});
+function fetchAPI() {
+    const baseUrl = 'https://api.spacexdata.com';
+    const endpoints = [
+        '/v4/launches/upcoming', 
+        '/v4/launches/past'
+    ];
+	const SpacexDatasets = endpoints.map(endpoint => fetch(baseUrl + endpoint));
+	return Promise.all(SpacexDatasets);
 };
 
-function turnToJSON(answer) {
-	const answerJSON = answer.json();
-	answerJSON.then(answer => {
-        let launch = answer;
-        makeElement(launch);
-	})
+function turnToJSON(response) {
+    return Promise.all(response.map(response => response.json()));
 };
 
 function makeElement(launchContent) {
-    launchContent.forEach(item => {
+    launchContent[0].forEach(item => {
         const liItem = document.createElement('LI');
         liItem.innerHTML = item.date_local + ': ' + item.name;
         document.body.appendChild(liItem);
