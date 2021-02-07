@@ -113,12 +113,32 @@ response from endpoint https://api.spacexdata.com/v4/launches/:
 
 ## Wishlist
 - [x] things
-- [ ] 
-- [ ] 
-- [ ] 
-- [ ] 
 
 ## Installation guide
+Create a directory using your terminal:
+```
+mkdir <directory name>
+```
+
+Navigate to the directory:
+```
+cd <directory name>
+```
+
+Install this project:
+```
+git clone https://github.com/roelandvs/web-app-from-scratch-2021.git
+```
+
+Move to directory:
+```
+cd web-app-from-scratch-2021
+```
+
+Install dependencies:
+```
+npm init
+```
 
 ## Actor Diagram
 ## Interaction Diagram
