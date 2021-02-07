@@ -1,63 +1,125 @@
-# Web App From Scratch @cmda-minor-web 2020 - 2021
+# Web App From Scratch
+[link to the site](https://roelandvs.github.io/web-app-from-scratch-2021/api_site/)  
 
-In this course you will learn to build a web application without frameworks or unnecessary libraries, but with vanilla HTML, CSS & JavaScript as much as possible. The end result is a modular, single page web app (SPA). Data will be retrieved from an external API of your choice, manipulated and finally shown in the UI of the App. You will learn different ways to structure code and develop your own coding style. With the gained knowledge you will be able to build interactive prototypes, based on real data. Also you will gain a better understanding of how API's, frameworks and libraries work.
+This project contains an application that shows the upcoming launches op SpaceX. The site exists out of an overview page of all the launches, and a detail page of each launch. This page contains specific information of the launch such as the crew, the goal of the launch, wich rocket is being used etc.
 
-## Learning goals
+The challenge of building this site is that it will be built without the use of a JS library or framework. 
 
-* _You can add structure to your code by applying patterns. You can defend the choice for the chosen patterns_
-* _You can retrieve data, manipulate it and dynamically convert it to html elements using templating_
-* _You understand how you can work with an external API using asynchronous code_
-* _You understand how you can manage state in your application and you inform the user of state where necessary_
+## SpaceX API
+To get the data of the website I'm using the [SPACEX API](https://docs.spacexdata.com/). This API contains a wide range of information about SpaceX such as launches, history, missions, rockets etc. There is no authentication required to use this public API.
 
-[Rubric](https://docs.google.com/spreadsheets/d/1vJJ4EhIqkefWj1nWFp0Pnvy1Kld-S2V3qwZgC6XQO0c/edit?usp=sharing), with learning goals
-[Overall plaaning](https://teams.microsoft.com/l/file/95EAEC95-4AB8-4E62-A810-2445969460B6?tenantId=0907bb1e-21fc-476f-8843-02d09ceb59a7&fileType=xlsx&objectUrl=https%3A%2F%2Ficthva.sharepoint.com%2Fsites%2FFDMCI_EDU__CMD20_21_Minor_Web_5i7j73jt%2FShared%20Documents%2F02%20-%20Web%20App%20From%20Scratch%2FWAFS%202021%20Planning.xlsx&baseUrl=https%3A%2F%2Ficthva.sharepoint.com%2Fsites%2FFDMCI_EDU__CMD20_21_Minor_Web_5i7j73jt&serviceName=teams&threadId=19:9bd8abc7b32c4e0196ddbaae12cf8e79@thread.tacv2&groupId=5d001f9a-0a4b-4768-92b1-0f1768328ba3)
+This API is not affiliated, associated, authorized, endorsed by, or in any way officially connected with Space Exploration Technologies Inc (SpaceX), or any of its subsidiaries or its affiliates. The names SpaceX as well as related names, marks, emblems and images are registered trademarks of their respective owners.
 
-## Program
+### Endpoints  
+The base URL of the API is https://api.spacexdata.com/v3 or https://api.spacexdata.com/v4 depending on wich version you want to use. The API encourages you to use v4 (version 4), because they wont add new data to v3. Then you can choose to get 
 
-### Week 1 - Hello API 🐒
+The API has many different endpoints: 
+- Capsules
+- Cores
+- Dragons
+- History
+- **Info**
+- Landing Pads
+- **Launches**
+- Launch Pads
+- **Missions**
+- Payloads
+- **Rockets**
+- Roadster
+- Ships
 
-Goal: Retrieve data from an API and render it in an overview page.
+I'm planning to use the bold endpoints.
 
-[Excercises](https://github.com/cmda-minor-web/web-app-from-scratch-2021/blob/master/course/week-1.md)
+### Ratelimits
+The API has a rate limit: 
+- 50 req/sec per IP address
 
-[Slides](https://docs.google.com/presentation/d/1hXfgIhBzJ2QXDmpKpMcx7G-a9R_fVrcPdeOyM3G0I00/edit?usp=sharing)
+### API response
+Each endpoint will respond with an array of JSON objects. 
 
-### Week 2 - Design and Refactor 🛠
+response from endpoint https://api.spacexdata.com/v4/launches/: 
+```json
+{
+    "fairings": null,
+    "links": {
+        "patch": {
+            "small": "https://images2.imgbox.com/53/22/dh0XSLXO_o.png",
+            "large": "https://images2.imgbox.com/15/2b/NAcsTEB6_o.png"
+        },
+        "reddit": {
+            "campaign": "https://www.reddit.com/r/spacex/comments/ezn6n0/crs20_launch_campaign_thread",
+            "launch": "https://www.reddit.com/r/spacex/comments/fe8pcj/rspacex_crs20_official_launch_discussion_updates/",
+            "media": "https://www.reddit.com/r/spacex/comments/fes64p/rspacex_crs20_media_thread_videos_images_gifs/",
+            "recovery": null
+        },
+        "flickr": {
+            "small": [],
+            "original": [
+                "https://live.staticflickr.com/65535/49635401403_96f9c322dc_o.jpg",
+                "https://live.staticflickr.com/65535/49636202657_e81210a3ca_o.jpg",
+                "https://live.staticflickr.com/65535/49636202572_8831c5a917_o.jpg",
+                "https://live.staticflickr.com/65535/49635401423_e0bef3e82f_o.jpg",
+                "https://live.staticflickr.com/65535/49635985086_660be7062f_o.jpg"
+            ]
+        },
+        "presskit": "https://www.spacex.com/sites/spacex/files/crs-20_mission_press_kit.pdf",
+        "webcast": "https://youtu.be/1MkcWK2PnsU",
+        "youtube_id": "1MkcWK2PnsU",
+        "article": "https://spaceflightnow.com/2020/03/07/late-night-launch-of-spacex-cargo-ship-marks-end-of-an-era/",
+        "wikipedia": "https://en.wikipedia.org/wiki/SpaceX_CRS-20"
+    },
+    "static_fire_date_utc": "2020-03-01T10:20:00.000Z",
+    "static_fire_date_unix": 1583058000,
+    "tdb": false,
+    "net": false,
+    "window": 0,
+    "rocket": "5e9d0d95eda69973a809d1ec",
+    "success": true,
+    "failures": [],
+    "details": "SpaceX's 20th and final Crew Resupply Mission under the original NASA CRS contract, this mission brings essential supplies to the International Space Station using SpaceX's reusable Dragon spacecraft. It is the last scheduled flight of a Dragon 1 capsule. (CRS-21 and up under the new Commercial Resupply Services 2 contract will use Dragon 2.) The external payload for this mission is the Bartolomeo ISS external payload hosting platform. Falcon 9 and Dragon will launch from SLC-40, Cape Canaveral Air Force Station and the booster will land at LZ-1. The mission will be complete with return and recovery of the Dragon capsule and down cargo.",
+    "crew": [],
+    "ships": [],
+    "capsules": [
+        "5e9e2c5cf359185d753b266f"
+    ],
+    "payloads": [
+        "5eb0e4d0b6c3bb0006eeb253"
+    ],
+    "launchpad": "5e9e4501f509094ba4566f84",
+    "auto_update": true,
+    "flight_number": 91,
+    "name": "CRS-20",
+    "date_utc": "2020-03-07T04:50:31.000Z",
+    "date_unix": 1583556631,
+    "date_local": "2020-03-06T23:50:31-05:00",
+    "date_precision": "hour",
+    "upcoming": false,
+    "cores": [
+        {
+            "core": "5e9e28a7f359187afd3b2662",
+            "flight": 2,
+            "gridfins": true,
+            "legs": true,
+            "reused": true,
+            "landing_attempt": true,
+            "landing_success": true,
+            "landing_type": "RTLS",
+            "landpad": "5e9e3032383ecb267a34e7c7"
+        }
+    ],
+    "id": "5eb87d42ffd86e000604b384"
+}
+```
 
-Goal: Design the web app. Add routes and states. Split code into modules. Rendering detail page.
+## Wishlist
+- [x] things
+- [ ] 
+- [ ] 
+- [ ] 
+- [ ] 
 
-[Excercises](https://github.com/cmda-minor-web/web-app-from-scratch-2021/blob/master/course/week-2.md)
+## Installation guide
 
-[Slides](https://docs.google.com/presentation/d/1ycANqFk9LtrZCBJF2TyQ1c_bejjEctSlb-52xbK_P1g/edit?usp=sharing)
+## Actor Diagram
+## Interaction Diagram
 
-### Week 3 - Wrapping up 🎁
-
-Goal:
-Manipulate data. Reflect on end result
-
-[Excercises](https://github.com/cmda-minor-web/web-app-from-scratch-2021/blob/master/course/week-3.md)
-
-[Slides](https://docs.google.com/presentation/d/1yZi-ODpENKHMr0-kpKmnCI6dGSgXS9oeLxMXCJnieic/edit?usp=sharing)
-
-## Best Practices
-All work during this course will be tested against our [Best Practices for JavaScript](https://github.com/cmda-minor-web/best-practices/blob/master/javascript.md).
-
-<!-- Add a link to your live demo in Github Pages 🌐-->
-
-<!-- ☝️ replace this description with a description of your own work -->
-
-<!-- replace the code in the /docs folder with your own, so you can showcase your work with GitHub Pages 🌍 -->
-
-<!-- Add a nice poster image here at the end of the week, showing off your shiny frontend 📸 -->
-
-<!-- Maybe a table of contents here? 📚 -->
-
-<!-- How about a section that describes how to install this project? 🤓 -->
-
-<!-- ...but how does one use this project? What are its features 🤔 -->
-
-<!-- What external data source is featured in your project and what are its properties 🌠 -->
-
-<!-- Maybe a checklist of done stuff and stuff still on your wishlist? ✅ -->
-
-<!-- How about a license here? 📜 (or is it a licence?) 🤷 -->
