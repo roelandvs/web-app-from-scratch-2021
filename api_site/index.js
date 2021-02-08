@@ -1,13 +1,16 @@
 fetchAPI()
     .then(turnToJSON)
-    .then(makeElement)
-    // .then(console.log)
+    .then(mergeDatasets)
+    // .then(filterEntries)
+    .then(console.log)
 
 function fetchAPI() {
-    const baseUrl = 'https://api.spacexdata.com';
+    const baseUrl = 'https://api.spacexdata.com/v4';
     const endpoints = [
-        '/v4/launches/upcoming', 
-        '/v4/launches/past'
+        '/launches/upcoming', 
+        '/payloads',
+        '/launchpads',
+        '/rockets',
     ];
 	const SpacexDatasets = endpoints.map(endpoint => fetch(baseUrl + endpoint));
 	return Promise.all(SpacexDatasets);
@@ -15,6 +18,41 @@ function fetchAPI() {
 
 function turnToJSON(response) {
     return Promise.all(response.map(response => response.json()));
+};
+
+function mergeDatasets(datasets) {
+    let launchesDataset = datasets[0];
+    let payloadsDataset = datasets[1];
+    let launchpadsDataset = datasets[2];
+    let rocketsDataset = datasets[3];
+    let completeData = [];
+
+    launchesDataset.map(entry => {
+        const payloadMatch = payloadsDataset.find(item => item.id === entry.payloads[0]);
+        const launchpadMatch = launchpadsDataset.find(item => item.id === entry.launchpad);
+        const rocketMatch = rocketsDataset.find(item => item.id === entry.rocket);
+
+        if (launchpadMatch || rocketMatch) {
+            const launchMatch = entry;
+            const mergedItem = {launchMatch, payloadMatch, launchpadMatch, rocketMatch};
+            completeData.push(mergedItem);
+        }
+    });
+
+    return completeData;
+};
+
+function filterEntries(datasets) {
+    return datasets.map(item => {
+        let cleanObject = {
+            launchInfo: {},
+            payloadInfo: {},
+            launchpadInfo: {},
+            rocketInfo: {}
+        };
+
+        return cleanObject;
+    });
 };
 
 function makeElement(launchContent) {
