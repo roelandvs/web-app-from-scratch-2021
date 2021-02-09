@@ -141,5 +141,8 @@ npm init
 ```
 
 ## Actor Diagram
+<img width="1193" alt="Screenshot 2021-02-09 at 10 50 18" src="https://user-images.githubusercontent.com/59770136/107346515-0fbbce80-6ac5-11eb-91a7-daf3475dad34.png">
+
 ## Interaction Diagram
+<img width="1450" alt="Screenshot 2021-02-09 at 10 49 42" src="https://user-images.githubusercontent.com/59770136/107346520-12b6bf00-6ac5-11eb-920c-652a0c234844.png">
 
