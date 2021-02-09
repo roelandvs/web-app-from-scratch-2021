@@ -2,6 +2,7 @@ fetchAPI()
     .then(turnToJSON)
     .then(mergeDatasets)
     // .then(filterEntries)
+    // .then(makeElements)
     .then(console.log)
 
 function fetchAPI() {
@@ -21,10 +22,10 @@ function turnToJSON(response) {
 };
 
 function mergeDatasets(datasets) {
-    let launchesDataset = datasets[0];
-    let payloadsDataset = datasets[1];
-    let launchpadsDataset = datasets[2];
-    let rocketsDataset = datasets[3];
+    const launchesDataset = datasets[0];
+    const payloadsDataset = datasets[1];
+    const launchpadsDataset = datasets[2];
+    const rocketsDataset = datasets[3];
     let completeData = [];
 
     launchesDataset.map(entry => {
