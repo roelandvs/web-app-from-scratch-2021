@@ -6,9 +6,4 @@ export const endpoints = [
     '/rockets',
 ];
 
-// fetchAPI()
-//     .then(turnToJSON)
-//     .then(mergeDatasets)
-//     .then(filterEntries)
-//     // .then(makeElements)
-//     .then(console.log)
+export const overViewEndpoint = 'launches/upcoming';
