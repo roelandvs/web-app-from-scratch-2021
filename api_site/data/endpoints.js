@@ -1,5 +1,5 @@
-const baseUrl = 'https://api.spacexdata.com/v4';
-const endpoints = [
+export const baseUrl = 'https://api.spacexdata.com/v4';
+export const endpoints = [
     '/launches/upcoming', 
     '/payloads',
     '/launchpads',
