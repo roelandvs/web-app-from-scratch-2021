@@ -1,3 +1,7 @@
 export function turnToJSON(response) {
-    return Promise.all(response.map(response => response.json()));
+    if (typeof response !== 'array') {
+        return response.json();
+    } else if (typeof response === 'array') {
+        return Promise.all(response.map(response => response.json()));
+    }
 };

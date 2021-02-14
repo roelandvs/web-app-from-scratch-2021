@@ -6,4 +6,4 @@ export const endpoints = [
     '/rockets',
 ];
 
-export const overViewEndpoint = 'launches/upcoming';
+export const overViewEndpoint = '/launches/upcoming';
