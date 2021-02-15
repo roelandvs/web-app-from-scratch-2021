@@ -22,7 +22,6 @@ export function renderHomeUI(dataset) {
         if (monthExists) {
             makeHomeElements(entry, +launchMonth, months);
         } else {
-            // console.log(allLaunchMonths);
             allLaunchMonths.push(launchMonth);
             makeHomeSkeleton(entry, +launchMonth, months);
         }
@@ -46,36 +45,37 @@ function makeHomeSkeleton(dataset, month, allMonths) {
 
 function makeHomeElements(dataset, month, allMonths) {
     const allSections = document.querySelectorAll('body > section');
-    const datePart = dataset.date_utc.split('T');
+    const dateParts = dataset.date_utc.split('T');
     const abbrMonth = allMonths[month - 1].substring(0,3);
-
+    const launchNameContent = 
+        dataset.name.includes(' (v1.0)') ? 
+        dataset.name.replace(' (v1.0)', '') : 
+        dataset.name;
+                              
     const entireModule = document.createElement('li');
+    const detailLink = document.createElement('a');
     const launchDate = document.createElement('p');
     const launchContent = document.createElement('section');
     const launchName = document.createElement('h3');
     const launchNumber = document.createElement('p');
     const launchTime = document.createElement('p');
 
+    detailLink.setAttribute('href', '#launches/' + dataset.id);
+
     allSections.forEach(singleSection => {
         if (singleSection.childNodes[0].innerText === allMonths[month - 1]) {
-            launchDate.innerHTML = datePart[0].split('-')[2] + ' ' + abbrMonth;
-            launchName.innerHTML = dataset.name;
-            launchNumber.innerHTML = 'Launch number: ' + dataset.flight_number;
-            launchTime.innerHTML = 'Launch time: ' + datePart[1].substring(0,5);
+            launchDate.innerHTML = dateParts[0].split('-')[2] + ' ' + abbrMonth;
+            launchName.innerHTML = launchNameContent;
+            launchNumber.innerHTML = 'Launch number: ' + '<span>' + dataset.flight_number + '</span>';
+            launchTime.innerHTML = 'Launch time: ' + '<span>' + dateParts[1].substring(0,5) + '</span>';
         
             singleSection.childNodes[1].appendChild(entireModule);
-            entireModule.appendChild(launchDate);
-            entireModule.appendChild(launchContent);
+            entireModule.appendChild(detailLink);
+            detailLink.appendChild(launchDate);
+            detailLink.appendChild(launchContent);
             launchContent.appendChild(launchName);
             launchContent.appendChild(launchNumber);
             launchContent.appendChild(launchTime);
         };
     });
-
 };
-
-// function renderElements(tag, parent, content) {
-//     const element = document.createElement(tag);
-//     element.innerHTML = content;
-//     parent.appendChild(element);
-// };

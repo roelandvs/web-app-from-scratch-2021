@@ -1,16 +1,13 @@
-import { 
-    baseUrl,
-    endpoints
- } from '../data/endpoints.js';
+import { turnToJSON } from '../utils/turnToJSON.js'
 
-export function fetchAPI(endpoints) {
+export function fetchAPI(endpoint, id, ) {
     const baseUrl = 'https://api.spacexdata.com/v4';
 
-    if (typeof endpoints === 'string') {
-        const spaceXDataset = fetch(baseUrl + endpoints);
+    if (!id) {
+        const spaceXDataset = fetch(baseUrl + endpoint);
         return (spaceXDataset);
-    } else if (typeof endpoints === 'array') {
-        const SpacexDatasets = endpoints.map(endpoint => fetch(baseUrl + endpoint));
-	    return Promise.all(SpacexDatasets);
-    }
+    } else {
+        const currentDataset = fetch(baseUrl + endpoint + id);
+        return currentDataset;
+    };
 };

@@ -7,3 +7,4 @@ export const endpoints = [
 ];
 
 export const overViewEndpoint = '/launches/upcoming';
+export const currentEndpoint = '/launches/';
