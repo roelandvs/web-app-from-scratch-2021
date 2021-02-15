@@ -1,8 +1,11 @@
 import { fetchAPI } from '../helpers/fetchAPI.js'
-import { turnToJSON } from '../utils/turnToJSON.js'
+import { 
+    turnToJSON,
+    turnMultipleToJSON
+ } from '../utils/turnToJSON.js'
 import { 
     overViewEndpoint,
-    currentEndpoint
+    currentEndpoint,
 } from '../data/endpoints.js'
 import { renderHomeUI } from '../helpers/renderHomeUI.js'
 import { removeAllChildNodes } from '../helpers/removeContent.js'
@@ -20,7 +23,18 @@ export function handleRoutes() {
             removeAllChildNodes(document.getElementsByTagName('body')[0])
             fetchAPI(currentEndpoint, id)
                 .then(turnToJSON)
+                .then(response => {
+                    const detailEndpoints = [
+                        '/payloads/' + response.payloads[0],
+                        '/launchpads/' + response.launchpad,
+                        '/rockets/' + response.rocket,
+                    ];
+                    
+                    return fetchAPI(response, response.id, detailEndpoints);
+                })
+                //I'm missing the original endpoint JSON 
+                .then(turnMultipleToJSON)
                 .then(console.log)
         }
     });
-} 
+};
