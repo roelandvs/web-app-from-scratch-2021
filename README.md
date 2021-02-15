@@ -1,5 +1,5 @@
 # Web App From Scratch
-[link to the site](https://roelandvs.github.io/web-app-from-scratch-2021/api_site/)  
+[link to the site](https://roelandvs.github.io/web-app-from-scratch-2021/api_site/#launches)  
 
 This project contains an application that shows the upcoming launches op SpaceX. The site exists out of an overview page of all the launches, and a detail page of each launch. This page contains specific information of the launch such as the crew, the goal of the launch, wich rocket is being used etc.
 
