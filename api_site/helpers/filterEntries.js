@@ -1,58 +1,70 @@
-export function filterEntries(datasets) {
-    return datasets.map(item => {
-        let cleanObject = {
-            launchInfo: {
-                launch_date: item.launchMatch.date_local,
-                launch_date_precision: item.launchMatch.date_precision,
-                launch_number: item.launchMatch.flight_number,
-                launch_name: item.launchMatch.name,
-                launch_details: item.launchMatch.details,
-            },
-            payloadInfo: item.payloadMatch ? {
-                customers: item.payloadMatch.customers,
-                dragon: item.payloadMatch.dragon,
-                manufacturers: item.payloadMatch.manufacturers,
-                mass_kg: item.payloadMatch.mass_kg,
-                payload_name: item.payloadMatch.name,
-                nationality: item.payloadMatch.nationalities,
-                payload_name: item.payloadMatch.name,
-                orbit: item.payloadMatch.orbit,
-                type: item.payloadMatch.type,
-            } : null,
-            launchpadInfo: {
-                launchpad_name: item.launchpadMatch.name,
-                launchpad_name_full: item.launchpadMatch.full_name,
-                launchpad_details: item.launchpadMatch.details,
-                launch_attempts: item.launchpadMatch.launch_attempts,
-                launch_successes: item.launchpadMatch.launch_successes,
-                region: item.launchpadMatch.region,
-                location: item.launchpadMatch.locality,
-            },
-            rocketInfo: {
-                rocket_name: item.rocketMatch.name,
-                rocket_mass_kg: item.rocketMatch.mass.kg,
-                rocket_height: item.rocketMatch.height,
-                rocket_succes_pct: item.rocketMatch.success_rate_pct,
-                boosters: item.rocketMatch.boosters,
-                cost_per_launch: item.rocketMatch.cost_per_launch,
-                rocket_description: item.rocketMatch.description,
-                rocket_diameter_meters: item.rocketMatch.diameter.meters,
-                first_flight: item.rocketMatch.first_flight,
-                payload_weights: item.rocketMatch.payload_weights,
-                images: item.rocketMatch.flickr_images,
-                engine: {
-                    engine_layout: item.rocketMatch.engines.layout,
-                    engine_number: item.rocketMatch.engines.number,
-                    engine_layout: item.rocketMatch.engines.layout,
-                },
-                stages: {
-                    stages_number: item.rocketMatch.stages,
-                    stages_first: item.rocketMatch.first_stage,
-                    stages_second: item.rocketMatch.second_stage,
-                }
-            }
-        };
+export function filterEntries(originalEndpoint, secondEndpoints) {
+    const launchDataset = originalEndpoint;
+    let payloadDataset;
+    let launchpadDataset;
+    let rocketDataset;
 
-        return cleanObject;
-    });
+    if (secondEndpoints.length === 3) {
+        payloadDataset = secondEndpoints[0];
+        launchpadDataset = secondEndpoints[1];
+        rocketDataset = secondEndpoints[2];
+    } else {
+        launchpadDataset = secondEndpoints[0];
+        rocketDataset = secondEndpoints[1];
+    };
+
+    const cleanObject = {
+        launchInfo: {
+            launch_date: launchDataset.date_local,
+            launch_date_precision: launchDataset.date_precision,
+            launch_number: launchDataset.flight_number,
+            launch_name: launchDataset.name,
+            launch_details: launchDataset.details,
+        },
+        payloadInfo: payloadDataset ? {
+            customers: payloadDataset.customers,
+            dragon: payloadDataset.dragon,
+            manufacturers: payloadDataset.manufacturers,
+            mass_kg: payloadDataset.mass_kg,
+            payload_name: payloadDataset.name,
+            nationality: payloadDataset.nationalities,
+            payload_name: payloadDataset.name,
+            orbit: payloadDataset.orbit,
+            type: payloadDataset.type,
+        } : null,
+        launchpadInfo: {
+            launchpad_name: launchpadDataset.name,
+            launchpad_name_full: launchpadDataset.full_name,
+            launchpad_details: launchpadDataset.details,
+            launch_attempts: launchpadDataset.launch_attempts,
+            launch_successes: launchpadDataset.launch_successes,
+            region: launchpadDataset.region,
+            location: launchpadDataset.locality,
+        },
+        rocketInfo: {
+            rocket_name: rocketDataset.name,
+            rocket_mass_kg: rocketDataset.mass.kg,
+            rocket_height: rocketDataset.height,
+            rocket_succes_pct: rocketDataset.success_rate_pct,
+            boosters: rocketDataset.boosters,
+            cost_per_launch: rocketDataset.cost_per_launch,
+            rocket_description: rocketDataset.description,
+            rocket_diameter_meters: rocketDataset.diameter.meters,
+            first_flight: rocketDataset.first_flight,
+            payload_weights: rocketDataset.payload_weights,
+            images: rocketDataset.flickr_images,
+            engine: {
+                engine_layout: rocketDataset.engines.layout,
+                engine_number: rocketDataset.engines.number,
+                engine_layout: rocketDataset.engines.layout,
+            },
+            stages: {
+                stages_number: rocketDataset.stages,
+                stages_first: rocketDataset.first_stage,
+                stages_second: rocketDataset.second_stage,
+            }
+        }
+    };
+
+    return cleanObject;
 };
