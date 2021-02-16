@@ -1,5 +1,5 @@
 export function renderHomeUI(dataset) {
-    let allLaunchMonths = [];
+    // let allLaunchMonths = [];
     const months = [
         'January',
         'February',
@@ -13,34 +13,39 @@ export function renderHomeUI(dataset) {
         'October',
         'November',
         'December',
+        'No date yet'
     ];
 
-    dataset.forEach(entry => {
-        const launchMonth = entry.date_utc.match(/\-(.*\d)\-/)[1];
-        const monthExists = allLaunchMonths.find(item => item === launchMonth);
+    makeHomeSkeleton(months);
 
-        if (monthExists) {
-            makeHomeElements(entry, +launchMonth, months);
-        } else {
-            allLaunchMonths.push(launchMonth);
-            makeHomeSkeleton(entry, +launchMonth, months);
-        }
-    })
+    dataset.forEach(entry => {
+        //if launchdate is not yet known, the launchdate month must be unknown
+        if (entry.date_precision === 'half' || entry.date_precision === 'quarter') {
+            entry.date_utc = '2021-13-01T00:00:00.000Z';
+        };
+
+        const launchMonth = entry.date_utc.match(/\-(.*\d)\-/)[1];
+        makeHomeElements(entry, +launchMonth, months);
+    });
 };
 
-function makeHomeSkeleton(dataset, month, allMonths) {
-    const bodyElement = document.getElementsByTagName('body');
-    const monthWrapper = document.createElement('section');
-    const monthName = document.createElement('h2');
-    const allLaunches = document.createElement('ol');
+function makeHomeSkeleton(months) {
+    let currentMonth = new Date().getMonth();
 
-    monthName.innerHTML = allMonths[month - 1];
-
-    bodyElement[0].appendChild(monthWrapper);
-    monthWrapper.appendChild(monthName);
-    monthWrapper.appendChild(allLaunches);
-
-    makeHomeElements(dataset, month, allMonths);
+    months.map(month => {
+        if (months.findIndex(item => item === month) >= currentMonth) {
+            const bodyElement = document.getElementsByTagName('body');
+            const monthWrapper = document.createElement('section');
+            const monthName = document.createElement('h2');
+            const allLaunches = document.createElement('ol');
+    
+            monthName.innerHTML = month;
+    
+            bodyElement[0].appendChild(monthWrapper);
+            monthWrapper.appendChild(monthName);
+            monthWrapper.appendChild(allLaunches);
+        }
+    })
 };
 
 function makeHomeElements(dataset, month, allMonths) {
@@ -64,7 +69,15 @@ function makeHomeElements(dataset, month, allMonths) {
 
     allSections.forEach(singleSection => {
         if (singleSection.childNodes[0].innerText === allMonths[month - 1]) {
-            launchDate.innerHTML = dateParts[0].split('-')[2] + ' ' + abbrMonth;
+
+            if (dataset.date_precision === 'half' || dataset.date_precision === 'quarter') {
+                launchDate.innerHTML = ' - ';
+            } else if (dataset.date_precision === 'month') {
+                launchDate.innerHTML = ' - ' + abbrMonth;
+            } else {
+                launchDate.innerHTML = dateParts[0].split('-')[2] + ' ' + abbrMonth;
+            }
+                
             launchName.innerHTML = launchNameContent;
             launchNumber.innerHTML = 'Launch number: ' + '<span>' + dataset.flight_number + '</span>';
             launchTime.innerHTML = 'Launch time: ' + '<span>' + dateParts[1].substring(0,5) + '</span>';

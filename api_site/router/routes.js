@@ -20,16 +20,18 @@ export function handleRoutes() {
                 .then(renderHomeUI)
         },
         'launches/:id': id => {
-            removeAllChildNodes(document.getElementsByTagName('body')[0])
+            removeAllChildNodes(document.getElementsByTagName('body')[0]);
+            let singleEndpoint;
+
             fetchAPI(currentEndpoint, id)
                 .then(turnToJSON)
                 .then(response => {
+                    singleEndpoint = response;
                     const detailEndpoints = [
                         '/payloads/' + response.payloads[0],
                         '/launchpads/' + response.launchpad,
                         '/rockets/' + response.rocket,
                     ];
-                    
                     return fetchAPI(response, response.id, detailEndpoints);
                 })
                 //I'm missing the original endpoint JSON 
