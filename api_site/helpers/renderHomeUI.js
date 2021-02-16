@@ -27,6 +27,8 @@ export function renderHomeUI(dataset) {
         const launchMonth = entry.date_utc.match(/\-(.*\d)\-/)[1];
         makeHomeElements(entry, +launchMonth, months);
     });
+
+    addNoDataText();
 };
 
 function makeHomeSkeleton(months) {
@@ -91,4 +93,17 @@ function makeHomeElements(dataset, month, allMonths) {
             launchContent.appendChild(launchTime);
         };
     });
+};
+
+function addNoDataText() {
+    const allSectionOl = document.querySelectorAll('body > section > ol');
+
+    allSectionOl.forEach(singleOl => {
+        const noDateNode = document.createElement('p');
+        noDateNode.innerHTML = 'No launches planned...';
+
+        if (!singleOl.hasChildNodes()) {
+            singleOl.replaceWith(noDateNode);
+        }
+    })
 };
