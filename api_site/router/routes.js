@@ -34,7 +34,6 @@ export function handleRoutes() {
                     ];
                     return fetchAPI(response, response.id, detailEndpoints);
                 })
-                //I'm missing the original endpoint JSON 
                 .then(turnMultipleToJSON)
                 .then(console.log)
         }
