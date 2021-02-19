@@ -1,5 +1,11 @@
 export function makeHomeSkeleton(months) {
-    let currentMonth = new Date().getMonth();
+    //nniet zo netjes, want er kan een launch in Jan 2022 zijn
+    const currentMonth = new Date().getMonth();
+    const body = document.querySelector('body');
+    const mainTitle = document.createElement('h1');
+
+    mainTitle.innerHTML = 'Space<span>X</span> Launches';
+    body.appendChild(mainTitle);
 
     months.map(month => {
         if (months.findIndex(item => item === month) >= currentMonth) {
@@ -13,6 +19,6 @@ export function makeHomeSkeleton(months) {
             bodyElement[0].appendChild(monthWrapper);
             monthWrapper.appendChild(monthName);
             monthWrapper.appendChild(allLaunches);
-        }
-    })
+        };
+    });
 };

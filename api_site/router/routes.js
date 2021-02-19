@@ -8,8 +8,8 @@ import {
 } from '../data/endpoints.js'
 import { fetchAPI } from '../helpers/fetchAPI.js'
 import { renderHomeUI } from '../helpers/renderHomeUI.js'
+import { renderDetailUI } from '../helpers/renderDetailUI.js'
 import { removeAllChildNodes } from '../helpers/removeContent.js'
-import { mergeDatasets } from '../helpers/mergeDatasets.js'
 import { filterEntries } from '../helpers/filterEntries.js'
 
 export function handleRoutes() {
@@ -35,7 +35,6 @@ export function handleRoutes() {
                         ];
                     } else {
                         detailEndpoints = [
-                            // '/payloads/' + response.payloads[0],
                             '/launchpads/' + response.launchpad,
                             '/rockets/' + response.rocket,
                         ];
@@ -46,7 +45,8 @@ export function handleRoutes() {
                 .then(response => {
                     return filterEntries(singleEndpoint, response)
                 })
-                .then(console.log)
+                .then(renderDetailUI)
+                // .then(console.log)
         }
     });
 };

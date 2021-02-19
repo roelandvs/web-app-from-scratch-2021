@@ -6,7 +6,6 @@ export function makeHomeElements(dataset, month, allMonths) {
         dataset.name.includes(' (v1.0)') ? 
         dataset.name.replace(' (v1.0)', '') : 
         dataset.name;
-                              
     const entireModule = document.createElement('li');
     const detailLink = document.createElement('a');
     const launchDate = document.createElement('p');
