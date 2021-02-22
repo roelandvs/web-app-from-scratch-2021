@@ -12,6 +12,19 @@ body {
     max-width: 1400px;
 }
 
+header {
+    padding-top: 50px;
+    /* moet beter responive worden */
+    width: 90%;
+    margin: 0 auto;
+}
+
+header h1 {
+    position: relative;
+    font-size: 4em;
+    z-index: 10;
+}
+
 h1 {
     font-size: 5em;
     text-transform: uppercase;
@@ -63,6 +76,28 @@ a {
     color: #fff;
     display: flex;
     transition: 0.5s all;
+}
+
+.background-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 50vw;
+    width: 100vw;
+    /* z-index: -1; */
+
+    background: rgb(22,22,22);
+    background: linear-gradient(0deg, rgba(22,22,22,1) 0%, rgba(22,22,22,0.5) 50%, rgba(22,22,22,0.3) 75%, rgba(22,22,22,0.1) 100%);
+}
+
+.background-overlay div {
+    position: relative;
+    height: 100%;
+    width: 100%;
+    z-index: -2;
+    background-repeat: no-repeat;
+    background-size: 100% auto;
+    background-position: top center;
 }
 
 body > section > p {

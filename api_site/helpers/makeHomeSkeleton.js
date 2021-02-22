@@ -4,6 +4,7 @@ export function makeHomeSkeleton(months) {
     const body = document.querySelector('body');
     const mainTitle = document.createElement('h1');
 
+    body.style.backgroundImage = "";
     mainTitle.innerHTML = 'Space<span>X</span> Launches';
     body.appendChild(mainTitle);
 

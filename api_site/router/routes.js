@@ -14,7 +14,8 @@ import { filterEntries } from '../helpers/filterEntries.js'
 
 export function handleRoutes() {
     routie({
-        launches: () => {
+        'launches': () => {
+            removeAllChildNodes(document.getElementsByTagName('body')[0]);
             fetchAPI(overViewEndpoint)
                 .then(turnToJSON)
                 .then(renderHomeUI)
