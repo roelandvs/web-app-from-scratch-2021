@@ -22,7 +22,8 @@ header {
 }
 
 header h1,
-header p {
+header p,
+header img {
     position: relative;
     z-index: 10;
 }
@@ -108,16 +109,35 @@ a {
     transition: 0.5s all;
 }
 
+.img-container {
+    flex-basis: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 50px;
+}
+
+.img-container img {
+    width: 50px;
+    margin-right: 10px;
+    cursor: pointer;
+    transition: 0.5s;
+}
+
+.img-container img:hover {
+    opacity: .6;
+}
+
 .background-overlay {
     position: absolute;
     top: 0;
     left: 0;
     height: 50vw;
     width: 100vw;
+    max-height: 800px;
     /* z-index: -1; */
 
     background: rgb(22,22,22);
-    background: linear-gradient(0deg, rgba(22,22,22,1) 0%, rgba(22,22,22,0.5) 30%, rgba(22,22,22,0.3) 75%, rgba(22,22,22,0.1) 100%);
+    background: linear-gradient(0deg, rgba(22,22,22,1) 0%, rgba(22,22,22,0.5) 30%, rgba(22,22,22,0.3) 50%, rgba(22,22,22,0.1) 100%);
 }
 
 .background-overlay div {
