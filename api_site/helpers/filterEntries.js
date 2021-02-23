@@ -4,6 +4,8 @@ export function filterEntries(originalEndpoint, secondEndpoints) {
     let launchpadDataset;
     let rocketDataset;
 
+    console.log(launchDataset)
+
     if (secondEndpoints.length === 3) {
         payloadDataset = secondEndpoints[0];
         launchpadDataset = secondEndpoints[1];
