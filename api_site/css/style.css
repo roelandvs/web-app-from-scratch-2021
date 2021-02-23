@@ -133,7 +133,7 @@ a {
     left: 0;
     height: 50vw;
     width: 100vw;
-    max-height: 800px;
+    /* max-height: 700px; */
     /* z-index: -1; */
 
     background: rgb(22,22,22);
