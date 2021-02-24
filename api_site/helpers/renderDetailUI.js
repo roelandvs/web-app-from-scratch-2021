@@ -69,21 +69,56 @@ export function renderDetailUI(dataset) {
         wikiLink.appendChild(wikiImg)
     };
 
-    renderPayloadSection(dataset);
+    return dataset;
+    // renderPayloadSection(dataset);
+    // renderRocketSection(dataset);
 };
 
-function renderPayloadSection(dataset) {
-    const launch = dataset.launchInfo;
-    const rocket = dataset.rocketInfo;
-    const launchpad = dataset.launchpadInfo;
+export function renderPayloadSection(dataset) {
+    // const launch = dataset.launchInfo;
+    // const rocket = dataset.rocketInfo;
+    // const launchpad = dataset.launchpadInfo;
     const payload = dataset.payloadInfo;
+    const main = document.createElement('main');   
+
+    console.log(payload);
 
     // making payload elements
     const payloadSection = document.createElement('section');
+    const payloadTitle = document.createElement('h2');
+    const payloadName = document.createElement('p');
+    const payloadDataList = document.createElement('ul');
+
+    const weight = document.createElement('li');
+    const customer = document.createElement('li');
+    const manufacturer = document.createElement('li');
+    const nationality = document.createElement('li');
+    const orbit = document.createElement('li');
+    const type = document.createElement('li');
 
     // adding attributes
     payloadSection.classList.add('detail-section');
 
+    // adding content
+    payloadTitle.innerHTML = 'Payload';
+    payloadName.innerHTML = payload.payload_name;
+    weight.innerHTML = 'weigth ' + '<span>' + payload.mass_kg + ' KG' + '</span>';
+    customer.innerHTML = 'customer ' + '<span>' + payload.customers[0] + '</span>';
+    manufacturer.innerHTML = 'manufacturer ' + '<span>' + payload.manufacturers[0] + '</span>';
+    nationality.innerHTML = 'nationality ' + '<span>' + payload.nationality + '</span>';
+    orbit.innerHTML = 'orbit ' + '<span>' + payload.orbit + '</span>';
+    type.innerHTML = 'type ' + '<span>' + payload.type + '</span>';
+
     // append elements
-    body.appendChild(payloadSection);
+    body.appendChild(main);
+    main.appendChild(payloadSection);
+    payloadSection.appendChild(payloadTitle);
+    payloadSection.appendChild(payloadName);
+    payloadSection.appendChild(payloadDataList);
+    payloadDataList.appendChild(customer);
+    payloadDataList.appendChild(manufacturer);
+    payloadDataList.appendChild(nationality);
+    payloadDataList.appendChild(weight);
+    payloadDataList.appendChild(orbit);
+    payloadDataList.appendChild(type);
 };

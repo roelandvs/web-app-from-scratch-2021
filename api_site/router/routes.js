@@ -9,6 +9,7 @@ import {
 import { fetchAPI } from '../helpers/fetchAPI.js'
 import { renderHomeUI } from '../helpers/renderHomeUI.js'
 import { renderDetailUI } from '../helpers/renderDetailUI.js'
+import { renderPayloadSection } from '../helpers/renderDetailUI.js'
 import { removeAllChildNodes } from '../helpers/removeContent.js'
 import { filterEntries } from '../helpers/filterEntries.js'
 
@@ -47,6 +48,7 @@ export function handleRoutes() {
                     return filterEntries(singleEndpoint, response)
                 })
                 .then(renderDetailUI)
+                .then(renderPayloadSection)
                 // .then(console.log)
         }
     });

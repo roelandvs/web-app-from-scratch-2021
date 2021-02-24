@@ -12,6 +12,15 @@ body {
     max-width: 1400px;
 }
 
+main {
+    display: flex;
+    flex-wrap: wrap;
+    width: 90%;
+    margin: auto;
+    margin-top: calc(45vw);
+    justify-content: space-between;
+}
+
 header {
     padding-top: 70px;
     /* moet beter responive worden */
@@ -92,6 +101,10 @@ ol {
     justify-content: space-between;
 }
 
+ul {
+    list-style-type: none;
+}
+
 li {
     width: calc(50% - 10px);
     min-width: 350px;
@@ -131,7 +144,7 @@ a {
     position: absolute;
     top: 0;
     left: 0;
-    height: 50vw;
+    height: 100vh;
     width: 100vw;
     /* max-height: 700px; */
     /* z-index: -1; */
@@ -146,7 +159,7 @@ a {
     width: 100%;
     z-index: -2;
     background-repeat: no-repeat;
-    background-size: 100% auto;
+    background-size:  auto 100vh;
     background-position: top center;
 }
 
@@ -195,15 +208,74 @@ a:hover {
     color: grey;
 }
 
-/* @media only screen and (min-width: 1200px) {
-    .background-overlay {
+
+
+
+
+/* ---- everything of detail sections ---- */
+
+.detail-section {
+    position: relative;
+    border: 2px solid rgb(148, 148, 148);
+    z-index: 20;
+    transition: none;
+    background-color: #161616;
+    padding: 40px 50px 60px;
+    width: calc(50% - 20px);
+    min-width: 300px;
+    max-width: 450px;
+    margin-bottom: 40px;
+}
+
+.detail-section h2 {
+    font-size: 1.6rem;
+    margin-bottom: 0px;
+}
+
+.detail-section h2 + p {
+    font-size: 2rem;
+    font-weight: 600;
+    margin-bottom: 30px;
+}
+
+.detail-section li {
+    text-transform: uppercase;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+    cursor: auto;
+    min-width: 0px;
+
+    display: flex;
+    width: 100%;
+    margin-bottom: -1px;
+    border: 1px solid rgb(148, 148, 148);
+    border-style: solid none;
+    padding: 15px 30px;
+    font-size: .9rem;
+    font-weight: 600;
+    letter-spacing: .5px;
+}
+
+.detail-section li span {
+    margin: 0 0 0 auto;
+    font-weight: 400;
+}
+
+
+
+
+
+
+@media only screen and (min-width: 1200px) {
+    /* .background-overlay {
         height: 85vh;
-    }
+    } */
 
     .background-overlay div {
-        background-position: 10% 0%;
+        background-size:  100vw auto;
+        /* background-position: 10% 0%; */
     }
-}  */
+} 
 
 @media only screen and (min-width: 1600px) {
     body {
