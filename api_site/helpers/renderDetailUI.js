@@ -10,6 +10,7 @@ export function renderDetailUI(dataset) {
     const dateParts = launch.launch_date_utc.split('T');
     
     // making header elements
+    const main = document.createElement('main');   
     const header = document.createElement('header');
     const detailTitle = document.createElement('h1');
     const launchDate = document.createElement('p');
@@ -30,6 +31,7 @@ export function renderDetailUI(dataset) {
 
     // append elements
     body.appendChild(header);
+    body.appendChild(main);
     header.appendChild(detailTitle);
     header.appendChild(launchDate);
     header.appendChild(launchTime);
@@ -75,21 +77,14 @@ export function renderDetailUI(dataset) {
 };
 
 export function renderPayloadSection(dataset) {
-    // const launch = dataset.launchInfo;
-    // const rocket = dataset.rocketInfo;
-    // const launchpad = dataset.launchpadInfo;
     const payload = dataset.payloadInfo;
-    const main = document.createElement('main');   
-
-    console.log(payload);
+    const main = document.querySelector('main');
 
     // making payload elements
     const payloadSection = document.createElement('section');
     const payloadTitle = document.createElement('h2');
     const payloadName = document.createElement('p');
     const payloadDataList = document.createElement('ul');
-
-    const weight = document.createElement('li');
     const customer = document.createElement('li');
     const manufacturer = document.createElement('li');
     const nationality = document.createElement('li');
@@ -102,7 +97,6 @@ export function renderPayloadSection(dataset) {
     // adding content
     payloadTitle.innerHTML = 'Payload';
     payloadName.innerHTML = payload.payload_name;
-    weight.innerHTML = 'weigth ' + '<span>' + payload.mass_kg + ' KG' + '</span>';
     customer.innerHTML = 'customer ' + '<span>' + payload.customers[0] + '</span>';
     manufacturer.innerHTML = 'manufacturer ' + '<span>' + payload.manufacturers[0] + '</span>';
     nationality.innerHTML = 'nationality ' + '<span>' + payload.nationality + '</span>';
@@ -110,15 +104,120 @@ export function renderPayloadSection(dataset) {
     type.innerHTML = 'type ' + '<span>' + payload.type + '</span>';
 
     // append elements
-    body.appendChild(main);
     main.appendChild(payloadSection);
     payloadSection.appendChild(payloadTitle);
     payloadSection.appendChild(payloadName);
     payloadSection.appendChild(payloadDataList);
+    payloadDataList.appendChild(type);
     payloadDataList.appendChild(customer);
     payloadDataList.appendChild(manufacturer);
     payloadDataList.appendChild(nationality);
-    payloadDataList.appendChild(weight);
+
+    if (payload.mass_kg) {
+        const weight = document.createElement('li');
+        weight.innerHTML = 'weigth ' + '<span>' + payload.mass_kg.toLocaleString('de-DE') + ' KG' + '</span>';
+        payloadDataList.appendChild(weight);
+    };
+
     payloadDataList.appendChild(orbit);
-    payloadDataList.appendChild(type);
+
+    return dataset
+};
+
+export function renderRocketSection(dataset) {
+    const rocket = dataset.rocketInfo;
+    const main = document.querySelector('main');   
+
+    console.log(rocket);
+
+    // making payload elements
+    const rocketSection = document.createElement('section');
+    const rocketTitle = document.createElement('h2');
+    const rocketName = document.createElement('p');
+    const rocketDataList = document.createElement('ul');
+    const costLaunch = document.createElement('li');
+    const firstFlight = document.createElement('li');
+    const succesPct = document.createElement('li');
+    const engines = document.createElement('li');
+    const weight = document.createElement('li');
+    const height = document.createElement('li');
+    const diameter = document.createElement('li');
+
+    // // adding attributes
+    rocketSection.classList.add('detail-section');
+
+    // // adding content
+    rocketTitle.innerHTML = 'Rocket';
+    rocketName.innerHTML = rocket.rocket_name;
+    costLaunch.innerHTML = 'cost launch ' + '<span>' + '$' + rocket.cost_per_launch.toLocaleString('de-DE') + '</span>';
+    firstFlight.innerHTML = 'first flight ' + '<span>' + rocket.first_flight + '</span>';
+    succesPct.innerHTML = 'succes pct' + '<span>' + rocket.rocket_succes_pct + '%' + '</span>';
+    engines.innerHTML = 'engines' + '<span>' + rocket.engine.engine_number + '</span>';
+    weight.innerHTML = 'weight' + '<span>' + rocket.rocket_mass_kg.toLocaleString('de-DE') + ' kg' + '</span>';
+    height.innerHTML = 'height' + '<span>' + rocket.rocket_height.meters + ' M' + '</span>';
+    diameter.innerHTML = 'diameter' + '<span>' + rocket.rocket_diameter_meters + ' M' + '</span>';
+
+    // // append elements
+    main.appendChild(rocketSection);
+    rocketSection.appendChild(rocketTitle);
+    rocketSection.appendChild(rocketName);
+    rocketSection.appendChild(rocketDataList);
+    rocketDataList.appendChild(costLaunch);
+    rocketDataList.appendChild(engines);
+    rocketDataList.appendChild(succesPct);
+    rocketDataList.appendChild(weight);
+    rocketDataList.appendChild(height);
+    rocketDataList.appendChild(diameter);
+    rocketDataList.appendChild(firstFlight);
+
+    return dataset
+};
+
+export function renderLaunchPadSection(dataset) {
+    // const rocket = dataset.rocketInfo;
+    // const main = document.querySelector('main');   
+
+    // console.log(rocket);
+
+    // // making payload elements
+    // const rocketSection = document.createElement('section');
+    // const rocketTitle = document.createElement('h2');
+    // const rocketName = document.createElement('p');
+    // const rocketDataList = document.createElement('ul');
+    // const costLaunch = document.createElement('li');
+    // const firstFlight = document.createElement('li');
+    // const succesPct = document.createElement('li');
+    // const engines = document.createElement('li');
+    // const weight = document.createElement('li');
+    // const height = document.createElement('li');
+    // const diameter = document.createElement('li');
+
+    // // // adding attributes
+    // rocketSection.classList.add('detail-section');
+
+    // // // adding content
+    // rocketTitle.innerHTML = 'Rocket';
+    // rocketName.innerHTML = rocket.rocket_name;
+    // costLaunch.innerHTML = 'cost launch ' + '<span>' + '$' + rocket.cost_per_launch.toLocaleString('de-DE') + '</span>';
+    // firstFlight.innerHTML = 'first flight ' + '<span>' + rocket.first_flight + '</span>';
+    // succesPct.innerHTML = 'succes pct' + '<span>' + rocket.rocket_succes_pct + '%' + '</span>';
+    // engines.innerHTML = 'engines' + '<span>' + rocket.engine.engine_number + '</span>';
+    // weight.innerHTML = 'weight' + '<span>' + rocket.rocket_mass_kg.toLocaleString('de-DE') + ' kg' + '</span>';
+    // height.innerHTML = 'height' + '<span>' + rocket.rocket_height.meters + ' M' + '</span>';
+    // diameter.innerHTML = 'diameter' + '<span>' + rocket.rocket_diameter_meters + ' M' + '</span>';
+
+    // // // append elements
+    // main.appendChild(rocketSection);
+    // rocketSection.appendChild(rocketTitle);
+    // rocketSection.appendChild(rocketName);
+    // rocketSection.appendChild(rocketDataList);
+    // rocketDataList.appendChild(costLaunch);
+    // rocketDataList.appendChild(engines);
+    // rocketDataList.appendChild(succesPct);
+    // rocketDataList.appendChild(weight);
+    // rocketDataList.appendChild(height);
+    // rocketDataList.appendChild(diameter);
+    // rocketDataList.appendChild(firstFlight);
+
+    // return dataset
 };

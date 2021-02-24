@@ -223,7 +223,7 @@ a:hover {
     padding: 40px 50px 60px;
     width: calc(50% - 20px);
     min-width: 300px;
-    max-width: 450px;
+    /* max-width: 450px; */
     margin-bottom: 40px;
 }
 

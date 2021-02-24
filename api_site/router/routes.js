@@ -10,6 +10,8 @@ import { fetchAPI } from '../helpers/fetchAPI.js'
 import { renderHomeUI } from '../helpers/renderHomeUI.js'
 import { renderDetailUI } from '../helpers/renderDetailUI.js'
 import { renderPayloadSection } from '../helpers/renderDetailUI.js'
+import { renderRocketSection } from '../helpers/renderDetailUI.js'
+import { renderLaunchPadSection } from '../helpers/renderDetailUI.js'
 import { removeAllChildNodes } from '../helpers/removeContent.js'
 import { filterEntries } from '../helpers/filterEntries.js'
 
@@ -45,10 +47,17 @@ export function handleRoutes() {
                 })
                 .then(turnMultipleToJSON)
                 .then(response => {
-                    return filterEntries(singleEndpoint, response)
+                    return filterEntries(singleEndpoint, response);
                 })
                 .then(renderDetailUI)
-                .then(renderPayloadSection)
+                .then(response => {
+                    if (response.payloadInfo) {
+                        renderPayloadSection(response);
+                    };
+                    return response;
+                })
+                .then(renderRocketSection)
+                .then(renderLaunchPadSection)
                 // .then(console.log)
         }
     });
