@@ -303,7 +303,7 @@ a:hover {
     .detail-section {
         width: 100%;
         min-width: 0px;
-        padding: 20px 20px 30px;
+        padding: 30px 20px;
     }
 
     .detail-section li {
@@ -314,7 +314,6 @@ a:hover {
 @media only screen and (min-width: 600px) {
     main {
         width: calc(90% - 150px);
-        top: calc(100vh - 130px);
     }
 }
 
@@ -322,6 +321,10 @@ a:hover {
     body {
         max-width: 1400px;
         margin: 50px 100px;
+    }
+
+    main {
+        top: calc(100vh - 80px);
     }
 
     .background-overlay div {
