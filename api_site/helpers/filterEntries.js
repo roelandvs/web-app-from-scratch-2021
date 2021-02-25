@@ -8,6 +8,7 @@ export function filterEntries(originalEndpoint, secondEndpoints) {
         payloadDataset = secondEndpoints[0];
         launchpadDataset = secondEndpoints[1];
         rocketDataset = secondEndpoints[2];
+        console.log(payloadDataset);
     } else {
         launchpadDataset = secondEndpoints[0];
         rocketDataset = secondEndpoints[1];
@@ -39,6 +40,8 @@ export function filterEntries(originalEndpoint, secondEndpoints) {
             launchpad_details: launchpadDataset.details,
             launch_attempts: launchpadDataset.launch_attempts,
             launch_successes: launchpadDataset.launch_successes,
+            long: launchpadDataset.longitude,
+            lat: launchpadDataset.latitude,
             region: launchpadDataset.region,
             location: launchpadDataset.locality,
         },

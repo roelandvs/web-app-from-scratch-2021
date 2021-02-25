@@ -128,8 +128,6 @@ export function renderRocketSection(dataset) {
     const rocket = dataset.rocketInfo;
     const main = document.querySelector('main');   
 
-    console.log(rocket);
-
     // making payload elements
     const rocketSection = document.createElement('section');
     const rocketTitle = document.createElement('h2');
@@ -174,50 +172,48 @@ export function renderRocketSection(dataset) {
 };
 
 export function renderLaunchPadSection(dataset) {
-    // const rocket = dataset.rocketInfo;
-    // const main = document.querySelector('main');   
+    const launchpad = dataset.launchpadInfo;
+    const main = document.querySelector('main');   
 
-    // console.log(rocket);
+    // console.log(launchpad);
 
-    // // making payload elements
-    // const rocketSection = document.createElement('section');
-    // const rocketTitle = document.createElement('h2');
-    // const rocketName = document.createElement('p');
-    // const rocketDataList = document.createElement('ul');
-    // const costLaunch = document.createElement('li');
-    // const firstFlight = document.createElement('li');
-    // const succesPct = document.createElement('li');
-    // const engines = document.createElement('li');
-    // const weight = document.createElement('li');
-    // const height = document.createElement('li');
-    // const diameter = document.createElement('li');
+    // // making launchpad elements
+    const launchpadSection = document.createElement('section');
+    const launchpadTitle = document.createElement('h2');
+    const launchpadName = document.createElement('p');
+    const launchpadDataList = document.createElement('ul');
+    const state = document.createElement('li');
+    const location = document.createElement('li');
+    const launchAttempts = document.createElement('li');
+    const launchSuccess = document.createElement('li');
+    const latitude = document.createElement('li');
+    const longitude = document.createElement('li');
 
     // // // adding attributes
-    // rocketSection.classList.add('detail-section');
+    launchpadSection.classList.add('detail-section');
 
     // // // adding content
-    // rocketTitle.innerHTML = 'Rocket';
-    // rocketName.innerHTML = rocket.rocket_name;
-    // costLaunch.innerHTML = 'cost launch ' + '<span>' + '$' + rocket.cost_per_launch.toLocaleString('de-DE') + '</span>';
-    // firstFlight.innerHTML = 'first flight ' + '<span>' + rocket.first_flight + '</span>';
-    // succesPct.innerHTML = 'succes pct' + '<span>' + rocket.rocket_succes_pct + '%' + '</span>';
-    // engines.innerHTML = 'engines' + '<span>' + rocket.engine.engine_number + '</span>';
-    // weight.innerHTML = 'weight' + '<span>' + rocket.rocket_mass_kg.toLocaleString('de-DE') + ' kg' + '</span>';
-    // height.innerHTML = 'height' + '<span>' + rocket.rocket_height.meters + ' M' + '</span>';
-    // diameter.innerHTML = 'diameter' + '<span>' + rocket.rocket_diameter_meters + ' M' + '</span>';
+    launchpadTitle.innerHTML = 'Launchpad';
+    launchpadName.innerHTML = launchpad.launchpad_name;
+    state.innerHTML = 'state ' + '<span>' + launchpad.region + '</span>';
+    location.innerHTML = 'location ' + '<span>' + launchpad.location + '</span>';
+    launchAttempts.innerHTML = 'launch attemps ' + '<span>' + launchpad.launch_attempts + '</span>';
+    launchSuccess.innerHTML = 'launch successes ' + '<span>' + launchpad.launch_successes + '</span>';
+    latitude.innerHTML = 'latitude ' + '<span>' + launchpad.lat + '</span>';
+    longitude.innerHTML = 'longitude ' + '<span>' + launchpad.long + '</span>';
 
     // // // append elements
-    // main.appendChild(rocketSection);
-    // rocketSection.appendChild(rocketTitle);
-    // rocketSection.appendChild(rocketName);
-    // rocketSection.appendChild(rocketDataList);
-    // rocketDataList.appendChild(costLaunch);
-    // rocketDataList.appendChild(engines);
-    // rocketDataList.appendChild(succesPct);
-    // rocketDataList.appendChild(weight);
-    // rocketDataList.appendChild(height);
-    // rocketDataList.appendChild(diameter);
-    // rocketDataList.appendChild(firstFlight);
+    main.appendChild(launchpadSection);
+    launchpadSection.appendChild(launchpadTitle);
+    launchpadSection.appendChild(launchpadName);
+    launchpadSection.appendChild(launchpadDataList);
+    launchpadSection.appendChild(state);
+    launchpadSection.appendChild(location);
+    launchpadSection.appendChild(latitude);
+    launchpadSection.appendChild(longitude);
+    launchpadSection.appendChild(launchAttempts);
+    launchpadSection.appendChild(launchSuccess);
 
-    // return dataset
+
+    return dataset
 };

@@ -9,7 +9,7 @@ body {
     font-family: 'PT Sans', sans-serif;
     color: #FFF;
     margin: 50px 100px;
-    max-width: 1400px;
+    overflow-x: hidden;
 }
 
 main {
@@ -146,7 +146,7 @@ a {
     left: 0;
     height: 100vh;
     width: 100vw;
-    /* max-height: 700px; */
+    max-height: 900px;
     /* z-index: -1; */
 
     background: rgb(22,22,22);
@@ -246,6 +246,7 @@ a:hover {
     min-width: 0px;
 
     display: flex;
+    flex-wrap: wrap;
     width: 100%;
     margin-bottom: -1px;
     border: 1px solid rgb(148, 148, 148);
@@ -261,15 +262,39 @@ a:hover {
     font-weight: 400;
 }
 
+@media only screen and (max-width: 500px) {
+    header h1 {
+        font-size: 3em;
+    }
+}
 
+@media only screen and (max-width: 600px) {
+    body {
+        margin: 40px 20px;
+    }
 
+    header {
+        padding-top: 20px;
+    }
 
+    .detail-section {
+        width: 100%;
+        min-width: 0px;
+        padding: 30px 20px;
+    }
 
+    .detail-section li {
+        padding: 15px 0px;
+    }
+} 
 
 @media only screen and (min-width: 1200px) {
     /* .background-overlay {
         height: 85vh;
     } */
+    body {
+        max-width: 1400px;
+    }
 
     .background-overlay div {
         background-size:  100vw auto;
