@@ -22,7 +22,7 @@ main {
     display: flex;
     flex-wrap: wrap;
     width: 90%;
-    max-width: 1200px;
+    max-width: 1300px;
     /* margin: auto; */
     /* margin-top: calc(45vw); */
     justify-content: space-between;
@@ -113,12 +113,12 @@ ul {
 }
 
 li {
-    width: calc(50% - 10px);
     min-width: 350px;
     margin-bottom: 20px;
     border: 1px solid rgb(240, 240, 240);
     -webkit-box-shadow: 2px 2px 10px 0px rgba(255,255,255,0.2);
     box-shadow: 2px 2px 10px 0px rgba(255,255,255,0.2);
+    width: calc(50% - 10px);
     cursor: pointer;
 }
 
@@ -153,7 +153,6 @@ a {
     left: 0;
     height: 100vh;
     width: 100%;
-    mX
     /* max-height: 900px; */
     /* z-index: -1; */
 
@@ -178,11 +177,11 @@ body > section > p {
 li > a > p {
     font-family: 'Roboto', sans-serif;
     border-right: 2px solid #FFF;
-    font-weight: 300;
     background-color: #212121;
     text-align: center;
     padding: 30px 20px 20px;
     font-size: 1.6em;
+    font-weight: 300;
     width: 4em;
 }
 
@@ -230,8 +229,7 @@ a:hover {
     background-color: #161616;
     padding: 40px 50px 60px;
     width: calc(50% - 20px);
-    min-width: 300px;
-    /* max-width: 450px; */
+    min-width: 370px;
     margin-bottom: 40px;
 }
 
@@ -270,12 +268,6 @@ a:hover {
     font-weight: 400;
 }
 
-@media only screen and (max-width: 500px) {
-    header h1 {
-        font-size: 2.5em;
-    }
-}
-
 @media only screen and (max-width: 600px) {
     body {
         margin: 40px 20px;
@@ -283,6 +275,40 @@ a:hover {
 
     header {
         padding-top: 20px;
+    }
+
+    h1 {
+        font-size: 3.5em;
+    }
+
+    header h1 {
+        font-size: 2.5em;
+    }
+
+    h2 {
+        font-size: 1.6em;
+    }
+
+    h3 {
+        font-size: 1.6em;
+    }
+
+    li {
+        min-width: 0px;
+        width: 100%;
+    }
+
+    li > a section {
+        min-width: 0px;
+    }
+
+    li > a p {
+        font-size: 1rem;
+        font-weight: 400;
+    }
+
+    li > a p::first-line {
+        font-size: 1.4rem;
     }
 
     .detail-section {
@@ -296,7 +322,13 @@ a:hover {
     }
 } 
 
-@media only screen and (min-width: 1300px) {
+@media only screen and (min-width: 600px) {
+    main {
+        width: calc(90% - 200px);
+    }
+}
+
+@media only screen and (min-width: 1000px) {
     /* .background-overlay {
         height: 85vh;
     } */
