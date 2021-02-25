@@ -20,7 +20,7 @@ export function renderDetailUI(dataset) {
     const backgroundContainer = document.createElement('div');
 
     // adding attr or styling
-    backgroundContainer.style.backgroundImage = "url(\"" + rocket.images[0] + "\")";
+    backgroundContainer.style.backgroundImage = "url(\"" + rocket.images[2] + "\")";
     backgroundOverlay.classList.add('background-overlay');
     imgContainer.classList.add('img-container');
 
