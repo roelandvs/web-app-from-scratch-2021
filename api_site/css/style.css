@@ -115,7 +115,7 @@ ul {
 li {
     min-width: 350px;
     margin-bottom: 20px;
-    border: 1px solid rgb(240, 240, 240);
+    border: 1px solid rgb(148, 148, 148);
     width: calc(50% - 10px);
     cursor: pointer;
 }
@@ -174,7 +174,7 @@ body > section > p {
 
 li > a > p {
     font-family: 'Roboto', sans-serif;
-    border-right: 2px solid #FFF;
+    border-right: 1px solid rgb(148, 148, 148);
     background-color: #212121;
     text-align: center;
     padding: 30px 20px 20px;
