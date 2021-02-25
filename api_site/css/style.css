@@ -8,7 +8,7 @@ body {
     background-color: #161616;
     font-family: 'PT Sans', sans-serif;
     color: #FFF;
-    margin: 50px 100px;
+    margin: 50px 75px;
     overflow-x: hidden;
 }
 
@@ -322,7 +322,7 @@ a:hover {
 
 @media only screen and (min-width: 600px) {
     main {
-        width: calc(90% - 200px);
+        width: calc(90% - 150px);
     }
 }
 
