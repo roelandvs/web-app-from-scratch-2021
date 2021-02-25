@@ -127,6 +127,7 @@ export function renderPayloadSection(dataset) {
 export function renderRocketSection(dataset) {
     const rocket = dataset.rocketInfo;
     const main = document.querySelector('main');   
+    const header = document.querySelector('header');
 
     // making payload elements
     const rocketSection = document.createElement('section');
@@ -141,10 +142,15 @@ export function renderRocketSection(dataset) {
     const height = document.createElement('li');
     const diameter = document.createElement('li');
 
-    // // adding attributes
+    // adding attributes
     rocketSection.classList.add('detail-section');
 
-    // // adding content
+    //if header is taller then screen the main must position lower
+    if (header.offsetHeight + 100 > screen.height) {
+        main.style.top = header.offsetHeight + 150 + 'px';
+    };
+
+    // adding content
     rocketTitle.innerHTML = 'Rocket';
     rocketName.innerHTML = rocket.rocket_name;
     costLaunch.innerHTML = 'cost launch ' + '<span>' + '$' + rocket.cost_per_launch.toLocaleString('de-DE') + '</span>';
@@ -155,7 +161,7 @@ export function renderRocketSection(dataset) {
     height.innerHTML = 'height' + '<span>' + rocket.rocket_height.meters + ' M' + '</span>';
     diameter.innerHTML = 'diameter' + '<span>' + rocket.rocket_diameter_meters + ' M' + '</span>';
 
-    // // append elements
+    // append elements
     main.appendChild(rocketSection);
     rocketSection.appendChild(rocketTitle);
     rocketSection.appendChild(rocketName);

@@ -13,11 +13,18 @@ body {
 }
 
 main {
+    position: absolute;
+    top: 100vh;
+    margin-left: auto;
+    margin-right: auto;
+    left: 0;
+    right: 0;
     display: flex;
     flex-wrap: wrap;
     width: 90%;
-    margin: auto;
-    margin-top: calc(45vw);
+    max-width: 1200px;
+    /* margin: auto; */
+    /* margin-top: calc(45vw); */
     justify-content: space-between;
 }
 
@@ -145,8 +152,9 @@ a {
     top: 0;
     left: 0;
     height: 100vh;
-    width: 100vw;
-    max-height: 900px;
+    width: 100%;
+    mX
+    /* max-height: 900px; */
     /* z-index: -1; */
 
     background: rgb(22,22,22);
@@ -264,7 +272,7 @@ a:hover {
 
 @media only screen and (max-width: 500px) {
     header h1 {
-        font-size: 3em;
+        font-size: 2.5em;
     }
 }
 
@@ -288,7 +296,7 @@ a:hover {
     }
 } 
 
-@media only screen and (min-width: 1200px) {
+@media only screen and (min-width: 1300px) {
     /* .background-overlay {
         height: 85vh;
     } */
