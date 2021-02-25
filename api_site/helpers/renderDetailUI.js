@@ -72,8 +72,6 @@ export function renderDetailUI(dataset) {
     };
 
     return dataset;
-    // renderPayloadSection(dataset);
-    // renderRocketSection(dataset);
 };
 
 export function renderPayloadSection(dataset) {
@@ -127,7 +125,6 @@ export function renderPayloadSection(dataset) {
 export function renderRocketSection(dataset) {
     const rocket = dataset.rocketInfo;
     const main = document.querySelector('main');   
-    const header = document.querySelector('header');
 
     // making payload elements
     const rocketSection = document.createElement('section');
@@ -144,13 +141,6 @@ export function renderRocketSection(dataset) {
 
     // adding attributes
     rocketSection.classList.add('detail-section');
-
-    //if header is taller then screen the main must position lower
-    if (header.offsetHeight + 250 > screen.height) {
-        main.style.top = header.offsetHeight + 150 + 'px';
-    } else if (window.innerWidth < 1100) {
-        main.style.top = window.innerHeight - 60 + 'px';
-    };
 
     // adding content
     rocketTitle.innerHTML = 'Rocket';
@@ -183,9 +173,7 @@ export function renderLaunchPadSection(dataset) {
     const launchpad = dataset.launchpadInfo;
     const main = document.querySelector('main');   
 
-    // console.log(launchpad);
-
-    // // making launchpad elements
+    // making launchpad elements
     const launchpadSection = document.createElement('section');
     const launchpadTitle = document.createElement('h2');
     const launchpadName = document.createElement('p');
@@ -197,10 +185,10 @@ export function renderLaunchPadSection(dataset) {
     const latitude = document.createElement('li');
     const longitude = document.createElement('li');
 
-    // // // adding attributes
+    // adding attributes
     launchpadSection.classList.add('detail-section');
 
-    // // // adding content
+    // adding content
     launchpadTitle.innerHTML = 'Launchpad';
     launchpadName.innerHTML = launchpad.launchpad_name;
     state.innerHTML = 'state ' + '<span>' + launchpad.region + '</span>';
@@ -210,7 +198,7 @@ export function renderLaunchPadSection(dataset) {
     latitude.innerHTML = 'latitude ' + '<span>' + launchpad.lat + '</span>';
     longitude.innerHTML = 'longitude ' + '<span>' + launchpad.long + '</span>';
 
-    // // // append elements
+    // append elements
     main.appendChild(launchpadSection);
     launchpadSection.appendChild(launchpadTitle);
     launchpadSection.appendChild(launchpadName);
@@ -221,7 +209,6 @@ export function renderLaunchPadSection(dataset) {
     launchpadSection.appendChild(longitude);
     launchpadSection.appendChild(launchAttempts);
     launchpadSection.appendChild(launchSuccess);
-
 
     return dataset
 };

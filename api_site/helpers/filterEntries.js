@@ -8,7 +8,6 @@ export function filterEntries(originalEndpoint, secondEndpoints) {
         payloadDataset = secondEndpoints[0];
         launchpadDataset = secondEndpoints[1];
         rocketDataset = secondEndpoints[2];
-        console.log(payloadDataset);
     } else {
         launchpadDataset = secondEndpoints[0];
         rocketDataset = secondEndpoints[1];
