@@ -216,7 +216,7 @@ a:hover {
     z-index: 20;
     transition: none;
     background-color: #161616;
-    padding: 40px 50px 60px;
+    padding: 30px 50px 50px;
     width: calc(50% - 20px);
     min-width: 370px;
     margin-bottom: 40px;
@@ -324,7 +324,7 @@ a:hover {
     }
 
     main {
-        top: calc(100vh - 80px);
+        top: calc(100vh - 70px);
     }
 
     .background-overlay div {
