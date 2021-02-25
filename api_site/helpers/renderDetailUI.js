@@ -149,7 +149,7 @@ export function renderRocketSection(dataset) {
     if (header.offsetHeight + 250 > screen.height) {
         main.style.top = header.offsetHeight + 150 + 'px';
     } else if (window.innerWidth < 1100) {
-        main.style.top = window.innerHeight - 55 + 'px';
+        main.style.top = window.innerHeight - 60 + 'px';
     };
 
     // adding content
