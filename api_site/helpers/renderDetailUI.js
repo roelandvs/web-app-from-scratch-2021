@@ -146,7 +146,7 @@ export function renderRocketSection(dataset) {
     rocketSection.classList.add('detail-section');
 
     //if header is taller then screen the main must position lower
-    if (header.offsetHeight + 100 > screen.height) {
+    if (header.offsetHeight + 250 > screen.height) {
         main.style.top = header.offsetHeight + 150 + 'px';
     };
 
