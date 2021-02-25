@@ -24,6 +24,10 @@ export function renderDetailUI(dataset) {
     backgroundOverlay.classList.add('background-overlay');
     imgContainer.classList.add('img-container');
 
+    if (dataset.rocketInfo.rocket_name === 'Falcon Heavy') {
+        backgroundContainer.style.backgroundPosition = 'center center';
+    };
+
     // assign content to elements
     detailTitle.innerHTML = launchNameContent;
     launchDate.innerHTML = dateParts[0];
