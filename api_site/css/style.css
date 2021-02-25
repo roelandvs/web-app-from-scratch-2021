@@ -14,7 +14,7 @@ body {
 
 main {
     position: absolute;
-    top: 90vh;
+    top: 85vh;
     margin-left: auto;
     margin-right: auto;
     left: 0;
@@ -23,14 +23,11 @@ main {
     flex-wrap: wrap;
     width: 90%;
     max-width: 1300px;
-    /* margin: auto; */
-    /* margin-top: calc(45vw); */
     justify-content: space-between;
 }
 
 header {
     padding-top: 70px;
-    /* moet beter responive worden */
     width: 90%;
     margin: 0 auto;
     display: flex;
@@ -151,9 +148,6 @@ a {
     left: 0;
     height: 85vh;
     width: 100%;
-    /* max-height: 900px; */
-    /* z-index: -1; */
-
     background: rgb(22,22,22);
     background: linear-gradient(0deg, rgba(22,22,22,1) 0%, rgba(22,22,22,0.5) 30%, rgba(22,22,22,0.3) 50%, rgba(22,22,22,0.1) 100%);
 }
@@ -195,7 +189,6 @@ li > a section {
 }
 
 li > a section p {
-    /* font-size: 1.1em; */
     letter-spacing: .7px;
     font-weight: 200;
     width: 100%;
@@ -212,8 +205,6 @@ li > a p > span {
 a:hover {
     color: grey;
 }
-
-
 
 
 
@@ -323,21 +314,18 @@ a:hover {
 @media only screen and (min-width: 600px) {
     main {
         width: calc(90% - 150px);
+        top: calc(100vh - 130px);
     }
 }
 
 @media only screen and (min-width: 1100px) {
-    /* .background-overlay {
-        height: 85vh;
-    } */
     body {
         max-width: 1400px;
+        margin: 50px 100px;
     }
 
     .background-overlay div {
-        background-size:  100vw auto;
-        /* background-position: 10% 0%; */
-    }
+        background-size:  100vw auto;    }
 } 
 
 @media only screen and (min-width: 1600px) {
