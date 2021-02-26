@@ -7,7 +7,7 @@ import {
     currentEndpoint,
 } from '../data/endpoints.js'
 import { 
-    renderDetailUI,
+    renderHeader,
     renderPayloadSection,
     renderRocketSection,
     renderLaunchPadSection
@@ -52,7 +52,7 @@ export function handleRoutes() {
                 .then(response => {
                     return filterEntries(singleEndpoint, response);
                 })
-                .then(renderDetailUI)
+                .then(renderHeader)
                 .then(response => {
                     if (response.payloadInfo) {
                         renderPayloadSection(response);

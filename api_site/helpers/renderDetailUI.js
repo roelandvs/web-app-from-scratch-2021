@@ -1,6 +1,6 @@
 const body = document.querySelector('body');
 
-export function renderDetailUI(dataset) {
+export function renderHeader(dataset) {
     const launch = dataset.launchInfo;
     const rocket = dataset.rocketInfo;
     const launchNameContent = 
