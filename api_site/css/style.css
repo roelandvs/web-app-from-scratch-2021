@@ -258,7 +258,18 @@ a:hover {
 }
 
 .loader-state img {
-    transform: rotate(30deg);
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+    animation: rotateLoader 1s ease infinite;
+}
+
+@keyframes rotateLoader {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
 }
 
 @media only screen and (max-width: 600px) {
