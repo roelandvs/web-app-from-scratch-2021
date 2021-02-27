@@ -1,20 +1,22 @@
 export function loader(state) {
-    const body = document.querySelector('body');
     if (state === 'active') {
+        const body = document.querySelector('body');
         const loader = document.createElement('div');
-        const loadImg = document.createElement('img');
+        const rocketIcon = document.createElement('img');
+        const marsIcon = document.createElement('img');
+        const waitText = document.createElement('p');
 
         loader.classList.add('loader-state');
-        loadImg.setAttribute('src', 'img/reddit-icon.svg');
+        rocketIcon.setAttribute('src', 'img/rocket-icon.png');
+        marsIcon.setAttribute('src', 'img/mars-icon.svg');
+        waitText.innerHTML = 'Fetching data...';
 
         body.appendChild(loader);
-        loader.appendChild(loadImg);
+        loader.appendChild(waitText);
+        loader.appendChild(rocketIcon);
+        loader.appendChild(marsIcon);
     } else {
         const loader = document.querySelector('.loader-state')
         loader.remove();
     }
-
-    // state === 'active'
-    //   ? loader.classList.add('loading')
-    //   : loader.classList.remove('loading');
 };

@@ -264,7 +264,23 @@ a:hover {
     top: 0;
     bottom: 0;
     margin: auto;
-    animation: rotateLoader 1s ease infinite;
+}
+
+.loader-state p {
+    font-family: 'Roboto', sans-serif;
+    text-align: center;
+    font-size: 1.6em;
+    font-weight: 250;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: calc(50% + 150px);
+    bottom: 0;
+    margin: auto;
+}
+
+.loader-state img:nth-of-type(1) {
+    animation: rotateLoader 2.5s linear infinite;
 }
 
 @keyframes rotateLoader {

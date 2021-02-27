@@ -4,7 +4,7 @@ import { addNoDataText } from './addNoLaunchText.js'
 import { loader } from './loader.js';
 
 export function renderHomeUI(dataset) {
-    // loader('remove');
+    loader('remove');
     const months = [
         'January',
         'February',
