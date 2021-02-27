@@ -1,9 +1,10 @@
 import { makeHomeSkeleton } from './makeHomeSkeleton.js'
 import { makeHomeElements } from './makeHomeElements.js'
 import { addNoDataText } from './addNoLaunchText.js'
+import { loader } from './loader.js';
 
 export function renderHomeUI(dataset) {
-    // let allLaunchMonths = [];
+    loader('remove');
     const months = [
         'January',
         'February',

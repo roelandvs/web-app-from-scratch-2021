@@ -1,3 +1,5 @@
+import { loader } from './loader.js';
+
 const body = document.querySelector('body');
 
 export function renderHeader(dataset) {
@@ -18,6 +20,8 @@ export function renderHeader(dataset) {
     const imgContainer = document.createElement('div');
     const backgroundOverlay = document.createElement('div');
     const backgroundContainer = document.createElement('div');
+
+    loader('remove');
 
     // adding attr or styling
     backgroundContainer.style.backgroundImage = "url(\"" + rocket.images[2] + "\")";

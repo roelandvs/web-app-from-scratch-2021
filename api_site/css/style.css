@@ -257,6 +257,10 @@ a:hover {
     font-weight: 400;
 }
 
+.loader-state img {
+    transform: rotate(30deg);
+}
+
 @media only screen and (max-width: 600px) {
     body {
         margin: 40px 20px;

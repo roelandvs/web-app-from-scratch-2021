@@ -12,6 +12,7 @@ import {
     renderRocketSection,
     renderLaunchPadSection
 } from '../helpers/renderDetailUI.js'
+import { loader } from '../helpers/loader.js'
 import { fetchAPI } from '../helpers/fetchAPI.js'
 import { renderHomeUI } from '../helpers/renderHomeUI.js'
 import { removeAllChildNodes } from '../helpers/removeContent.js'
@@ -22,6 +23,7 @@ export function handleRoutes() {
     routie({
         'launches': () => {
             removeAllChildNodes(document.getElementsByTagName('body')[0]);
+            loader('active');
             fetchAPI(overViewEndpoint)
                 .then(turnToJSON)
                 .then(renderHomeUI)
@@ -30,6 +32,7 @@ export function handleRoutes() {
             let singleEndpoint;
             let detailEndpoints;
             removeAllChildNodes(document.getElementsByTagName('body')[0]);
+            loader('active');
             fetchAPI(currentEndpoint, id)
                 .then(turnToJSON)
                 .then(response => {
