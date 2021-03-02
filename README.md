@@ -1,7 +1,7 @@
 # Web App From Scratch
 [link to the site](https://roelandvs.github.io/web-app-from-scratch-2021/api_site/#launches)  
 
-This project contains an application that shows the upcoming launches op SpaceX. The site exists out of an overview page of all the launches, and a detail page of each launch. This page contains specific information of the launch such as the crew, the goal of the launch, wich rocket is being used etc.
+This project contains an application that shows the upcoming launches op SpaceX. The site exists out of an overview page of all the launches, and a detail page of each launch. This page contains specific information of the launch such as the crew, the goal of the launch, which rocket is being used etc.
 
 The challenge of building this site is that it will be built without the use of a JS library or framework. 
 
@@ -111,9 +111,6 @@ response from endpoint https://api.spacexdata.com/v4/launches/:
 }
 ```
 
-## Wishlist
-- [x] things
-
 ## Installation guide
 Create a directory using your terminal:
 ```
@@ -141,8 +138,24 @@ npm init
 ```
 
 ## Actor Diagram
-<img width="1193" alt="Screenshot 2021-02-09 at 10 50 18" src="https://user-images.githubusercontent.com/59770136/107346515-0fbbce80-6ac5-11eb-91a7-daf3475dad34.png">
+<details>
+    <summary> Actor Diagram 1</summary>
+    <img width="1193" alt="Screenshot 2021-02-09 at 10 50 18" src="https://user-images.githubusercontent.com/59770136/107346515-0fbbce80-6ac5-11eb-91a7-daf3475dad34.png">
+</details>
+
+<details>
+    <summary> Actor Diagram 2</summary>
+    <img width="1217" alt="Screenshot 2021-03-02 at 12 06 58" src="https://user-images.githubusercontent.com/59770136/109639845-fcde6c00-7b4f-11eb-98e3-08e2b72ff76a.png">
+</details>
 
 ## Interaction Diagram
-<img width="1450" alt="Screenshot 2021-02-09 at 10 49 42" src="https://user-images.githubusercontent.com/59770136/107346520-12b6bf00-6ac5-11eb-920c-652a0c234844.png">
+<details>
+    <summary> Interaction Diagram 1</summary>
+    <img width="1450" alt="Screenshot 2021-02-09 at 10 49 42" src="https://user-images.githubusercontent.com/59770136/107346520-12b6bf00-6ac5-11eb-920c-652a0c234844.png">
+</details>
+
+<details>
+    <summary> Interaction Diagram 2</summary>
+    <img width="1597" alt="Screenshot 2021-03-02 at 12 07 14" src="https://user-images.githubusercontent.com/59770136/109639777-e0daca80-7b4f-11eb-956d-35a9dc41f6f9.png">
+</details>
 
