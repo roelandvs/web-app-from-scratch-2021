@@ -1,5 +1,4 @@
 export function makeHomeSkeleton(months) {
-    //nniet zo netjes, want er kan een launch in Jan 2022 zijn
     const currentMonth = new Date().getMonth();
     const body = document.querySelector('body');
     const mainTitle = document.createElement('h1');
@@ -8,6 +7,7 @@ export function makeHomeSkeleton(months) {
     mainTitle.innerHTML = 'Space<span>X</span> Launches';
     body.appendChild(mainTitle);
 
+    //checks months that already past this year, and renders the rest
     months.map(month => {
         if (months.findIndex(item => item === month) >= currentMonth) {
             const bodyElement = document.getElementsByTagName('body');

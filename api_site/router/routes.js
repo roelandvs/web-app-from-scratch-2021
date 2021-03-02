@@ -18,6 +18,7 @@ import { renderHomeUI } from '../helpers/renderHomeUI.js'
 import { removeAllChildNodes } from '../helpers/removeContent.js'
 import { filterEntries } from '../helpers/filterEntries.js'
 import { positionSection } from '../helpers/postitionSection.js'
+import { addNoDataText } from '../helpers/addNoLaunchText.js'
 
 export function handleRoutes() {
     routie({
@@ -27,6 +28,7 @@ export function handleRoutes() {
             fetchAPI(overViewEndpoint)
                 .then(turnToJSON)
                 .then(renderHomeUI)
+                .then(addNoDataText)
         },
         'launches/:id': id => {
             let singleEndpoint;

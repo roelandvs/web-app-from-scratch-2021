@@ -17,6 +17,7 @@ export function makeHomeElements(dataset, month, allMonths) {
     detailLink.setAttribute('href', '#launches/' + dataset.id);
 
     allSections.forEach(singleSection => {
+        //checks if monthname of section matches month of single launch (month)
         if (singleSection.childNodes[0].innerText === allMonths[month - 1]) {
 
             if (dataset.date_precision === 'half' || dataset.date_precision === 'quarter') {

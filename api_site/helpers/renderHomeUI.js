@@ -1,10 +1,10 @@
 import { makeHomeSkeleton } from './makeHomeSkeleton.js'
 import { makeHomeElements } from './makeHomeElements.js'
-import { addNoDataText } from './addNoLaunchText.js'
 import { loader } from './loader.js';
 
 export function renderHomeUI(dataset) {
     loader('remove');
+    //both functions use these months 
     const months = [
         'January',
         'February',
@@ -21,6 +21,7 @@ export function renderHomeUI(dataset) {
         'No date yet'
     ];
 
+    //this function makes the elements that only need to be rendered once
     makeHomeSkeleton(months);
 
     dataset.forEach(entry => {
@@ -30,8 +31,7 @@ export function renderHomeUI(dataset) {
         };
 
         const launchMonth = entry.date_utc.match(/\-(.*\d)\-/)[1];
+        //this function makes an li for each launch
         makeHomeElements(entry, +launchMonth, months);
     });
-
-    addNoDataText();
 };

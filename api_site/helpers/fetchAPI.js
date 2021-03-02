@@ -1,6 +1,7 @@
 export function fetchAPI(endpoint, id, detailEndpoints) {
     const baseUrl = 'https://api.spacexdata.com/v4';
 
+    //checks what needs to be fetched: all launches, one specific launch or endpoints within specific launch
     if (!id && !detailEndpoints) {
         const spaceXDataset = fetch(baseUrl + endpoint);
         return (spaceXDataset);
